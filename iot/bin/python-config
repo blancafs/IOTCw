@@ -1,4 +1,4 @@
-#!/mnt/c/Users/Blanca/Desktop/IOTCw/iot/bin/python
+#!/afs/inf.ed.ac.uk/user/s16/s1611086/Desktop/IOTCw/iot/bin/python
 
 import sys
 import getopt
