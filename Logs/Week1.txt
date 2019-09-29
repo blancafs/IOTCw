@@ -1,1 +1,5 @@
 
+Data analysis: 
+  1. Made environment for notebooks and github repo
+  2. Graphed all walking data to detect patterns - can clearly see some variables are more useful than others depending on the positioning of the thingy, so will have to take that into account when choosing readings to act on.
+  
