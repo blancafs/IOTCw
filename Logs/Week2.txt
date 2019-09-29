@@ -1,1 +1,4 @@
 
+Data Analysis:
+  1. made class to receive string of live data, add to database and keep calculating number of steps passed
+  2. attempt at threshold marking, simple but will work initially?
