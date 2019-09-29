@@ -9,5 +9,14 @@ class Engine:
         self.dh = DataHandler()
 
     def dealWithData(self, data):
-        s = self.dh.receive(data)
+        if data=="RESET":
+            self.reset()
+        data_arr = data.split(',')
+        timestamp = data_arr[0]
+        counter = data_arr[1]
+        data_str = ",".join(data_arr[2:])
+        s = self.dh.receive(data_str)
         return s
+
+    def.reset(self):
+        self.dh.reset()
