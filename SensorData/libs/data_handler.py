@@ -21,7 +21,7 @@ class DataHandler:
 
     def recalculate(self):
         df = self.db.iloc[-1]
-        th = max(self.db['accel_x']) - (max(self.db['accel_x'])-min(self.db['accel_x']))*0.17
+        th = max(self.db['accel_x']) - (max(self.db['accel_x'])-min(self.db['accel_x']))*0.23
         print('accel x and th', df['accel_x'], th)
         if df['accel_x']>th:
             self.step_count += 2
