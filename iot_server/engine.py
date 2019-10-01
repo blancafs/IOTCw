@@ -16,6 +16,9 @@ class Engine:
     def dealWithData(self, data):
         if data=="RESET":
             self.reset()
+        if len(data) is not 8:
+            print("Not receiving full data")
+            pass
         data_arr = data.split(',')
         timestamp = data_arr[0]
         counter = data_arr[1]
