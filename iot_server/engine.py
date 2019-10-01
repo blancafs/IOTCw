@@ -16,6 +16,7 @@ class Engine:
     def dealWithData(self, data):
         if data=="RESET":
             self.reset()
+            return
         if len(data)<1:
             print("Not receiving full data")
             return
