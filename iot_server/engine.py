@@ -18,7 +18,7 @@ class Engine:
             self.reset()
             return 0
         if len(data)<1:
-            print("Not receiving full data")
+            print("Not receiving full data... waiting for more")
             return
         data_arr = data.split(',')
         timestamp = data_arr[0]

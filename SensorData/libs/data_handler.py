@@ -20,7 +20,6 @@ class DataHandler:
         return False
 
     def recalculate(self):
-        self.db = gfilter(self.db)
         df = self.db.iloc[-1]
         th = max(self.db['accel_x']) - (max(self.db['accel_x'])-min(self.db['accel_x']))*0.23
         print('accel x and th', df['accel_x'], th)
