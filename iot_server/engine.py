@@ -18,5 +18,5 @@ class Engine:
         s = self.dh.receive(data_str)
         return s
 
-    def.reset(self):
+    def reset(self):
         self.dh.reset()
