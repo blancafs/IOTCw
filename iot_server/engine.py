@@ -1,5 +1,6 @@
 import sys
-sys.path.append('/mnt/c/Users/Blanca/Desktop/IOTCw/SensorData/')
+path = os.getcwd()+'/../'
+sys.path.append(path)
 from libs.data_handler import DataHandler
 from libs.configuration import TEST_STRINGS
 
