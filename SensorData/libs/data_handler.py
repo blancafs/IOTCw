@@ -4,6 +4,7 @@
 import pandas as pd
 from libs.configuration import DATA_COLUMN_NAMES
 from libs.helpers import parse, inRange, gfilter, applyRelu
+from scipy.signal import find_peaks
 
 class DataHandler:
 
@@ -13,7 +14,49 @@ class DataHandler:
         self.last_accy = -1
         self.first_peak = -1
         self.counter = 0
+        
+        #ari variables
+        self.windowed_frame = self.db.copy()
+        #self.lst=[]
+        
+    def recalculate(self):
+        df = self.db.iloc[-1]
+        th = max(self.db['accel_x']) - (max(self.db['accel_x'])-min(self.db['accel_x']))*0.23
+        print('accel x and th', df['accel_x'], th)
+        if df['accel_x']>th:
+            self.step_count += 1
+            
+    def recalculate_windowed(self):
+        df = self.db.iloc[-1]
+        windowed_frame = self.db.tail(20)
+        th = max(windowed_frame['accel_x']) - (max(windowed_frame['accel_x'])-min(windowed_frame['accel_x']))*0.23
+        print('accel x and th', df['accel_x'], th)
+        if df['accel_x']>th:
+            self.step_count += 1
 
+    def recalculate_peaks(self):
+        df = self.db.iloc[-1]
+        lst = []
+        list_size = 0
+        list_size = len(lst)
+        
+        #window stuff
+        windowed_frame = self.db.tail(20)
+        
+        peaks, _ = find_peaks(self.db['accel_x'])
+        for x in peaks:
+            if self.db['accel_x'][x]>-0.52:
+                lst.append(x)
+        self.step_count=len(lst)*2
+
+#         print(len(lst)*2)
+#         self.step_count = len(self.lst)*2
+#         windowed_frame = self.db.tail(20)
+#         th = max(windowed_frame['accel_x']) - (max(windowed_frame['accel_x'])-min(windowed_frame['accel_x']))*0.23
+#         print('accel x and th', df['accel_x'], th)
+#         if df['accel_x']>th:
+#             self.step_count += 1
+    
     def recalculate_threshold(self):
         df = self.db.iloc[-1]
         th = -0.69
@@ -31,7 +74,7 @@ class DataHandler:
         self.db = self.db.append(entry, ignore_index=True)
 
         # Change method below to change step detection algorithm
-        self.recalculate_threshold()
+        self.recalculate_peaks()
         return self.step_count
 
     def reset(self):
