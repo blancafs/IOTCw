@@ -44,6 +44,13 @@ class DataHandler:
         if self.counter==2:
             self.step_count +=2
             self.counter = 0
+    
+    def recalculate_threshold(self):
+        df = self.db.iloc[-1]
+        th = -0.69
+        print('accel x and th', df['accel_x'], th)
+        if df['accel_x']>th:
+            self.step_count += 1
 
     '''
     The receive method handles data string, adds it to the database and returns the number of steps up to date.

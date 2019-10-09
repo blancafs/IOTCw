@@ -1,1 +1,8 @@
 Flask
+jupyter
+jupyterlab
+matplotlib
+sklearn
+scipy
+pandas
+numpy
