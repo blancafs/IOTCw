@@ -109,7 +109,7 @@ Function comapre filtered vs unfiltered data & plots it
 def plot_filter_vs_unfiltered(my_df,dimensions_list=['accel_x'],
                               data_points=200,color='black',
                               min_max=True):
-    my_title = 'Filterd vs Unfiltered\n'+', '.join(dimensions_list)
+    my_title = 'Data:\n'+', '.join(dimensions_list)
     my_legend = [dim+'_filtered' for dim in dimensions_list]
     my_legend_full = dimensions_list+my_legend
     # get in numpy format
@@ -161,12 +161,16 @@ def run(data_frame,plot=False):
     #data_names_list = get_data_raw(data_dir,data_index=[idx])
     #data_frame_list = get_data_frame(data_names_list)
     #print(data_frame)
-    df  = data_frame 
-    dim = data_frame[dataframe.columns[0]]#['accel_y']
+    df = data_frame.copy()
+    #print(df.columns)
+    dim = [df.columns[0]]#['accel_z']#df.columns[0]#['accel_y']#['accel_x'] #data_frame[data_frame.columns[0]]
+    #print(dim)
     steps = calcualate_steps(my_df=df,my_dim=dim)
-    print('Approximate number of steps: {}'.format(steps))
+    #print('Approximate number of steps: {}'. format(steps))
+    print("Steps for "+str(df.columns[0])+ ": "+str(steps))
     if(plot==True):
         plot_filter_vs_unfiltered(data_frame,
                               dimensions_list=dim,
                               data_points=200,
                               color='red',min_max=True)
+    return steps

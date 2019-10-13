@@ -5,6 +5,7 @@ import pandas as pd
 from libs.configuration import DATA_COLUMN_NAMES
 from libs.helpers import parse, inRange, gfilter, applyRelu
 from scipy.signal import find_peaks
+import count_steps
 
 class DataHandler:
 
@@ -42,7 +43,6 @@ class DataHandler:
         
         #window stuff
         windowed_frame = self.db.tail(20)
-#         th = max(windowed_frame['accel_x']) - (max(windowed_frame['accel_x'])-min(windowed_frame['accel_x']))*0.10
         
         peaks, _ = find_peaks(self.db['accel_x'])
         for x in peaks:
@@ -64,6 +64,16 @@ class DataHandler:
         print('accel x and th', df['accel_x'], th)
         if df['accel_x']>th:
             self.step_count += 1
+    
+    def recalculate_filtered(self):
+        df = self.db
+        
+        xacc_df = pd.DataFrame(df['accel_x'], columns=['accel_x'])
+        yacc_df = pd.DataFrame(df['accel_y'], columns=['accel_y'])
+        zacc_df = pd.DataFrame(df['accel_z'], columns=['accel_z'])
+        
+        average_xyz=(count_steps.run(xacc_df)+count_steps.run(yacc_df,)+count_steps.run(zacc_df))/3
+        self.step_count = average_xyz
 
     '''
     The receive method handles data string, adds it to the database and returns the number of steps up to date.
