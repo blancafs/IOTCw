@@ -6,7 +6,7 @@ import pandas as pd
 from libs.configuration import DATA_COLUMN_NAMES
 from libs.helpers import parse, inRange, gfilter, applyRelu
 from scipy.signal import find_peaks
-import count_steps
+from . import count_steps
 
 class DataHandler:
 
