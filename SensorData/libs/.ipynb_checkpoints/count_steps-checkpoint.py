@@ -36,7 +36,7 @@ def get_data_frame(files_dir_list):
 Function setting up the butterworth filter
 returns the two parameters to pas sto filter_signal()
 '''
-def get_low_pass_filter(frequency=12,sample_rate=100,filter_type='low',filter_order=9):
+def get_low_pass_filter(frequency=10,sample_rate=100,filter_type='low',filter_order=9):
     b, a = sm.signal.build_filter(frequency=frequency,
                                   sample_rate=sample_rate,
                                   filter_type=filter_type,

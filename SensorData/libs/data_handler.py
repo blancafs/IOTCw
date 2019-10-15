@@ -1,6 +1,7 @@
 # Class to handle data coming in from Nordic Thingy in manner of a string=gyrox, gyroy, gyroz ... etc
 
 # Imports
+import math
 import pandas as pd
 from libs.configuration import DATA_COLUMN_NAMES
 from libs.helpers import parse, inRange, gfilter, applyRelu
@@ -15,6 +16,7 @@ class DataHandler:
         self.last_accy = -1
         self.first_peak = -1
         self.counter = 0
+        self.lines_received = 0
         
         #ari variables
         self.windowed_frame = self.db.copy()
@@ -73,19 +75,45 @@ class DataHandler:
         zacc_df = pd.DataFrame(df['accel_z'], columns=['accel_z'])
         
         average_xyz=(count_steps.run(xacc_df)+count_steps.run(yacc_df,)+count_steps.run(zacc_df))/3
-        self.step_count = average_xyz
+        self.step_count = average_xyz #count_steps.run(yacc_df,plot=False)
 
+    def recalculate_filtered_magnitude(self):
+        df = self.db
+        
+        xacc_df = pd.DataFrame(df['accel_x'], columns=['accel_x'])
+        yacc_df = pd.DataFrame(df['accel_y'], columns=['accel_y'])
+        zacc_df = pd.DataFrame(df['accel_z'], columns=['accel_z'])
+        
+        pd_merge = pd.concat([xacc_df,yacc_df,zacc_df],axis=1)
+        pd_merge = pd_merge.values.tolist()
+
+        d = {'mag_ax': []}
+        mag_df = pd.DataFrame(data=d)
+        i =0
+        for x,y,z in pd_merge:
+            i += 1
+            mag_df.loc[i]=math.sqrt(x*x + z*z + y*y)
+        #     print(x,y,z)
+        self.step_count = count_steps.run(mag_df)
+        
+        
     '''
     The receive method handles data string, adds it to the database and returns the number of steps up to date.
 
     Uses method recalculate to update step count.
     '''
     def receive(self, data_string):
+        self.lines_received += 1
         entry = parse(data_string)
         self.db = self.db.append(entry, ignore_index=True)
 
         # Change method below to change step detection algorithm
-        self.recalculate_peaks()
+        if self.lines_received >30:
+            self.recalculate_filtered_magnitude()
+#         df = self.db
+#         xacc_df = pd.DataFrame(df['accel_x'], columns=['accel_x'])
+#         print(xacc_df)
+        
         return self.step_count
 
     def reset(self):
