@@ -20,11 +20,18 @@ class Engine:
         if len(data)<1:
             print("Not receiving full data... waiting for more")
             return
-        data_arr = data.split(',')
-        timestamp = data_arr[0]
-        counter = data_arr[1]
-        data_str = ",".join(data_arr[2:])
-        s = self.dh.receive(data_str)
+        # Make matrix of data
+        line_arr = data.split(';')
+        data_arr = [line.split(',') for line in line_arr]
+        formatted_arr = [x[2:] for x in data_arr]
+
+        # timestamp = data_arr[0]
+        # counter = data_arr[1]
+        # data_str = ",".join(data_arr[2:])
+        # s = self.dh.receive(data_str)
+
+        # Send it over for dealing
+        s = self.dh.receive(formatted_arr)
         return s
 
     def reset(self):

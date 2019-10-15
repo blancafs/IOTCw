@@ -102,10 +102,16 @@ class DataHandler:
 
     Uses method recalculate to update step count.
     '''
-    def receive(self, data_string):
-        self.lines_received += 1
-        entry = parse(data_string)
-        self.db = self.db.append(entry, ignore_index=True)
+    def receive(self, data_matrix):
+        # Update lines received
+        self.lines_received += len(data_matrix)
+
+        # entry = parse(data_string)
+        # self.db = self.db.append(entry, ignore_index=True)
+
+        entries = [parse(line) for line in data_matrix]
+        for entry in entries:
+            self.db = self.db.append(entry, ignore_index=True)
 
         # Change method below to change step detection algorithm
         if self.lines_received >30:

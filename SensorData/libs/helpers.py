@@ -6,8 +6,8 @@ from scipy.ndimage import gaussian_filter
 '''
 Parse method takes a string of floats and returns a dataframe with a sole entry of those readings with the correct headings.
 '''
-def parse(data_string):
-    data_arr = [float(i) for i in data_string.split(',')]
+def parse(data_arr):
+    data_arr = [float(i) for i in data_arr]
     df = pd.DataFrame(columns=DATA_COLUMN_NAMES)
     df.loc[0] = data_arr
     return df

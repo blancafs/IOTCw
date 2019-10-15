@@ -1,28 +1,40 @@
-Requirement already satisfied: Flask in /usr/local/lib/python3.7/site-packages (1.1.1)
-Requirement already satisfied: scipy in /usr/local/lib/python3.7/site-packages (1.3.1)
-Requirement already satisfied: pandas in /usr/local/lib/python3.7/site-packages (0.25.1)
+Collecting Flask
+  Using cached https://files.pythonhosted.org/packages/9b/93/628509b8d5dc749656a9641f4caf13540e2cdec85276964ff8f43bbb1d3b/Flask-1.1.1-py2.py3-none-any.whl
+Collecting scipy
+  Downloading https://files.pythonhosted.org/packages/29/50/a552a5aff252ae915f522e44642bb49a7b7b31677f9580cfd11bcc869976/scipy-1.3.1-cp36-cp36m-manylinux1_x86_64.whl (25.2MB)
+Collecting pandas
+  Downloading https://files.pythonhosted.org/packages/73/9b/52e228545d14f14bb2a1622e225f38463c8726645165e1cb7dde95bfe6d4/pandas-0.25.1-cp36-cp36m-manylinux1_x86_64.whl (10.5MB)
 Collecting sklearn
-Requirement already satisfied: numpy in /usr/local/lib/python3.7/site-packages (1.17.2)
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/e5/e6/c3fdc53aed9fa19d6ff3abf97dfad768ae3afce1b7431f7500000816bda5/numpy-1.17.2-cp36-cp36m-manylinux1_x86_64.whl (20.4MB)
 Collecting matplotlib
-  Using cached https://files.pythonhosted.org/packages/c3/8b/af9e0984f5c0df06d3fab0bf396eb09cbf05f8452de4e9502b182f59c33b/matplotlib-3.1.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
-Requirement already satisfied: Jinja2>=2.10.1 in /usr/local/lib/python3.7/site-packages (from Flask) (2.10.1)
-Requirement already satisfied: Werkzeug>=0.15 in /usr/local/lib/python3.7/site-packages (from Flask) (0.16.0)
-Requirement already satisfied: itsdangerous>=0.24 in /usr/local/lib/python3.7/site-packages (from Flask) (1.1.0)
-Requirement already satisfied: click>=5.1 in /usr/local/lib/python3.7/site-packages (from Flask) (7.0)
-Requirement already satisfied: python-dateutil>=2.6.1 in /usr/local/lib/python3.7/site-packages (from pandas) (2.8.0)
-Requirement already satisfied: pytz>=2017.2 in /usr/local/lib/python3.7/site-packages (from pandas) (2019.2)
+  Downloading https://files.pythonhosted.org/packages/57/4f/dd381ecf6c6ab9bcdaa8ea912e866dedc6e696756156d8ecc087e20817e2/matplotlib-3.1.1-cp36-cp36m-manylinux1_x86_64.whl (13.1MB)
+Collecting Werkzeug>=0.15 (from Flask)
+  Using cached https://files.pythonhosted.org/packages/ce/42/3aeda98f96e85fd26180534d36570e4d18108d62ae36f87694b476b83d6f/Werkzeug-0.16.0-py2.py3-none-any.whl
+Collecting click>=5.1 (from Flask)
+  Using cached https://files.pythonhosted.org/packages/fa/37/45185cb5abbc30d7257104c434fe0b07e5a195a6847506c074527aa599ec/Click-7.0-py2.py3-none-any.whl
+Collecting itsdangerous>=0.24 (from Flask)
+  Using cached https://files.pythonhosted.org/packages/76/ae/44b03b253d6fade317f32c24d100b3b35c2239807046a4c953c7b89fa49e/itsdangerous-1.1.0-py2.py3-none-any.whl
+Collecting Jinja2>=2.10.1 (from Flask)
+  Downloading https://files.pythonhosted.org/packages/65/e0/eb35e762802015cab1ccee04e8a277b03f1d8e53da3ec3106882ec42558b/Jinja2-2.10.3-py2.py3-none-any.whl (125kB)
+Collecting pytz>=2017.2 (from pandas)
+  Downloading https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl (509kB)
+Collecting python-dateutil>=2.6.1 (from pandas)
+  Downloading https://files.pythonhosted.org/packages/41/17/c62faccbfbd163c7f57f3844689e3a78bae1f403648a6afb1d0866d87fbb/python_dateutil-2.8.0-py2.py3-none-any.whl (226kB)
 Collecting scikit-learn (from sklearn)
-  Using cached https://files.pythonhosted.org/packages/e9/57/8a9889d49d0d77905af5a7524fb2b468d2ef5fc723684f51f5ca63efed0d/scikit_learn-0.21.3-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
-Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
-  Using cached https://files.pythonhosted.org/packages/11/fa/0160cd525c62d7abd076a070ff02b2b94de589f1a9789774f17d7c54058e/pyparsing-2.4.2-py2.py3-none-any.whl
+  Downloading https://files.pythonhosted.org/packages/a0/c5/d2238762d780dde84a20b8c761f563fe882b88c5a5fb03c056547c442a19/scikit_learn-0.21.3-cp36-cp36m-manylinux1_x86_64.whl (6.7MB)
 Collecting cycler>=0.10 (from matplotlib)
-  Using cached https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+  Downloading https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
 Collecting kiwisolver>=1.0.1 (from matplotlib)
-  Using cached https://files.pythonhosted.org/packages/df/93/8bc9b52a8846be2b9572aa0a7c881930939b06e4abe1162da6a0430b794f/kiwisolver-1.1.0-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl
-Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.7/site-packages (from Jinja2>=2.10.1->Flask) (1.1.1)
-Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.7/site-packages (from python-dateutil>=2.6.1->pandas) (1.12.0)
+  Downloading https://files.pythonhosted.org/packages/f8/a1/5742b56282449b1c0968197f63eae486eca2c35dcd334bab75ad524e0de1/kiwisolver-1.1.0-cp36-cp36m-manylinux1_x86_64.whl (90kB)
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/11/fa/0160cd525c62d7abd076a070ff02b2b94de589f1a9789774f17d7c54058e/pyparsing-2.4.2-py2.py3-none-any.whl (65kB)
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.10.1->Flask)
+  Using cached https://files.pythonhosted.org/packages/b2/5f/23e0023be6bb885d00ffbefad2942bc51a620328ee910f64abe5a8d18dd1/MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl
+Collecting six>=1.5 (from python-dateutil>=2.6.1->pandas)
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
 Collecting joblib>=0.11 (from scikit-learn->sklearn)
   Downloading https://files.pythonhosted.org/packages/8f/42/155696f85f344c066e17af287359c9786b436b1bf86029bb3411283274f3/joblib-0.14.0-py2.py3-none-any.whl (294kB)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.7/site-packages (from kiwisolver>=1.0.1->matplotlib) (40.8.0)
-Installing collected packages: joblib, scikit-learn, sklearn, pyparsing, cycler, kiwisolver, matplotlib
-Successfully installed cycler-0.10.0 joblib-0.14.0 kiwisolver-1.1.0 matplotlib-3.1.1 pyparsing-2.4.2 scikit-learn-0.21.3 sklearn-0.0
+Collecting setuptools (from kiwisolver>=1.0.1->matplotlib)
+  Downloading https://files.pythonhosted.org/packages/6a/9a/50fadfd53ec909e4399b67c74cc7f4e883488035cfcdb90b685758fa8b34/setuptools-41.4.0-py2.py3-none-any.whl (580kB)
+Installing collected packages: Werkzeug, click, itsdangerous, MarkupSafe, Jinja2, Flask, numpy, scipy, pytz, six, python-dateutil, pandas, joblib, scikit-learn, sklearn, cycler, setuptools, kiwisolver, pyparsing, matplotlib
