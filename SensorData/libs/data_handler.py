@@ -62,7 +62,7 @@ class DataHandler:
     
     def recalculate_threshold(self):
         df = self.db.iloc[-1]
-        th = -0.69
+        th = -0.79
         print('accel x and th', df['accel_x'], th)
         if df['accel_x']>th:
             self.step_count += 1
@@ -106,10 +106,12 @@ class DataHandler:
         self.lines_received += 1
         entry = parse(data_string)
         self.db = self.db.append(entry, ignore_index=True)
+        
+        self.recalculate_threshold()
 
         # Change method below to change step detection algorithm
-        if self.lines_received >30:
-            self.recalculate_filtered_magnitude()
+#        if self.lines_received >30:
+#            self.recalculate_filtered_magnitude()
 #         df = self.db
 #         xacc_df = pd.DataFrame(df['accel_x'], columns=['accel_x'])
 #         print(xacc_df)
