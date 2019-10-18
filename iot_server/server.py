@@ -6,7 +6,7 @@ from pkg_resources import DistributionNotFound, VersionConflict
 # dependencies can be any iterable with strings,
 # e.g. file line-by-line iterator
 dependencies = [
-  'Flask>=0.9', 'scipy', 'pandas', 'sklearn', 'numpy','matplotlib'
+  'Flask>=0.9', 'scipy', 'pandas', 'sklearn', 'numpy','matplotlib', 'sensormotion'
 ]
 
 # Check for dependencies
@@ -21,7 +21,7 @@ except:
     os.system('pip3 install '+ d)
 
 # Custom imports
-from engine import Engine
+from .lib.engine import Engine
 
 # Web imports
 from flask import Flask, render_template, flash, request, redirect, url_for, session
