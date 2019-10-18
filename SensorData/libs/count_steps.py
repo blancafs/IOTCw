@@ -89,10 +89,10 @@ def get_filtered_steps(my_data):
     #print('max diff ', max((abs(peaks_coord-troughs_coord))))
     counter = 0
     for distance in abs(peaks_coord-troughs_coord):
-        if distance > 0.07:
+        if distance > 0.05:
             counter +=1
     print(counter*2)
-    return steps_filtered
+    return counter*2
 
 
 
@@ -124,9 +124,9 @@ def get_filtered_data(my_data):
     #print('max diff ', max((abs(peaks_coord-troughs_coord))))
     counter = 0
     for distance in abs(peaks_coord-troughs_coord):
-        if distance > 0.07:
+        if distance > 0.1:
             counter +=1
-    print(counter*2)
+    #print(counter*2)
     return my_data_filtered
 
 
@@ -234,8 +234,8 @@ def run(data_frame,plot=False):
     df = data_frame.copy()
     #print(df.columns)
     dim = [df.columns[0]]#['accel_z']#df.columns[0]#['accel_y']#['accel_x'] #data_frame[data_frame.columns[0]]
-    #print(dim)
-    steps = get_filtered_steps
+    #print(df)
+    steps = get_filtered_steps(df[dim].values)
     #steps = calcualate_steps(my_df=df,my_dim=dim)
     #print('Approximate number of steps: {}'. format(steps))
     print("Steps for "+str(df.columns[0])+ ": "+str(steps))

@@ -98,24 +98,31 @@ class DataHandler:
         
         
     '''
-    The receive method handles data string, adds it to the database and returns the number of steps up to date.
+    The receive method handles a 2D array containing arbitrary number of data lines (already separated as lists) adds it to the database and returns the number of steps up to date.
 
     Uses method recalculate to update step count.
     '''
     def receive(self, data_matrix):
+        print(type(data_matrix))
+        if(type(data_matrix) == 'str'):
+            line = data_matrix.split(',')
+            data_matrix = [new_str]
+        
         # Update lines received
         self.lines_received += len(data_matrix)
 
         # entry = parse(data_string)
         # self.db = self.db.append(entry, ignore_index=True)
-
+        print(data_matrix)
+        for line in data_matrix:
+            print(line)
         entries = [parse(line) for line in data_matrix]
         for entry in entries:
             self.db = self.db.append(entry, ignore_index=True)
 
         # Change method below to change step detection algorithm
-#        if self.lines_received >30:
-#            self.recalculate_filtered_magnitude()
+        if self.lines_received >30:
+            self.recalculate_filtered_magnitude()
 #         df = self.db
 #         xacc_df = pd.DataFrame(df['accel_x'], columns=['accel_x'])
 #         print(xacc_df)
