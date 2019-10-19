@@ -12,6 +12,9 @@ Returns a data matrix:
 '''
 class Formatter:
 
+    def __init__(self):
+        return
+
     @staticmethod
     def parse(data_arr):
         data_arr = [float(i) for i in data_arr]
@@ -23,9 +26,8 @@ class Formatter:
     """
     Gets a string and splits necessary information
     Input "a,b,c;a,b,c"
-    Output [[a,b,c][a,b,c]]
+    Output [[a,b,c],[a,b,c]]
     """
-
     @staticmethod
     def getDataMatrix(data):
         lines = data.split(';')

@@ -1,5 +1,9 @@
 # Imports
 import os
+import os, sys
+path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(path)
+
 import pkg_resources
 from pkg_resources import DistributionNotFound, VersionConflict
 
@@ -21,7 +25,7 @@ except:
     os.system('pip3 install '+ d)
 
 # Custom imports
-from .lib.engine import Engine
+from engine import Engine
 
 # Web imports
 from flask import Flask, render_template, flash, request, redirect, url_for, session

@@ -8,8 +8,8 @@ import pandas as pd
 
 from configuration import DATA_COLUMN_NAMES
 from helpers import inRange, gfilter, applyRelu
-from formatter import Formatter
 from debug import Debug
+from my_formatter import Formatter
 from updaterBuilder import UpdaterBuilder
 
 from scipy.signal import find_peaks
@@ -39,7 +39,6 @@ class DataHandler(Debug):
     Uses method recalculate to update step count.
     '''
     def receive(self, data):
-
         # Format the incoming data string
         self.log(data)
         data_matrix = Formatter.getDataMatrix(data)
