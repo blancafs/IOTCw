@@ -43,7 +43,7 @@ class UpdaterFilteredMagnitude(Updater):
 
         counter = 0
         for distance in abs(peaks_coord - troughs_coord):
-            if distance > 0.05:
+            if distance > 0.1:
                 counter += 1
         print(counter * 2)
         return counter * 2
@@ -60,4 +60,4 @@ class UpdaterFilteredMagnitude(Updater):
                                       dimensions_list=dim,
                                       data_points=200,
                                       color='red', min_max=True)
-        return steps
+        return str(steps)

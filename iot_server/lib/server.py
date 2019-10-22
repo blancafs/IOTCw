@@ -45,8 +45,10 @@ def index():
     # Receive string argument
     arg = request.args.get(data)
     print(arg)
-    #info = engine.dealWithData(arg)
-    return str(1) #info
+    info = engine.dealWithData(arg)
+    if info:
+        return info
+    return str(0)
 
 
 ### MAIN ###
