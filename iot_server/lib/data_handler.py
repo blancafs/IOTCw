@@ -51,7 +51,7 @@ class DataHandler(Debug):
             self.db = self.db.append(entry, ignore_index=True)
 
         # Change method below to change step detection algorithm
-        if self.lines_received >30:
+        if self.lines_received > 30:
             self.updater.update(self.db)
             #self.recalculate_filtered_magnitude()#input self.db
         

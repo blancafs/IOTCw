@@ -50,7 +50,7 @@ class UpdaterFilteredMagnitude(Updater):
 
     # For filtered use
     def run(self, data_frame, plot=False):
-        df = data_frame.copy()
+        df = data_frame#.copy()
         dim = [df.columns[0]]  # ['accel_z']#df.columns[0]#['accel_y']#['accel_x'] #data_frame[data_frame.columns[0]]
         steps = self.count_steps(df[dim].values)
 

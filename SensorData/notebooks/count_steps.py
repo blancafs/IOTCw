@@ -37,7 +37,7 @@ def get_data_frame(files_dir_list):
 Function setting up the butterworth filter
 returns the two parameters to pas sto filter_signal()
 '''
-def get_low_pass_filter(frequency=12,sample_rate=100,filter_type='low',filter_order=9):
+def get_low_pass_filter(frequency=2,sample_rate=7,filter_type='low',filter_order=20):
     b, a = sm.signal.build_filter(frequency=frequency,
                                   sample_rate=sample_rate,
                                   filter_type=filter_type,
@@ -89,7 +89,7 @@ def get_filtered_steps(my_data):
     #print('max diff ', max((abs(peaks_coord-troughs_coord))))
     counter = 0
     for distance in abs(peaks_coord-troughs_coord):
-        if distance > 0.005:
+        if distance > 0.03:
             counter +=1
     print(counter*2)
     return counter*2
@@ -124,7 +124,7 @@ def get_filtered_data(my_data):
     #print('max diff ', max((abs(peaks_coord-troughs_coord))))
     counter = 0
     for distance in abs(peaks_coord-troughs_coord):
-        if distance > 0.1:
+        if distance > 0.8:
             counter +=1
     #print(counter*2)
     return my_data_filtered
