@@ -94,14 +94,22 @@
     }
 
     // Classifies step and updates peaks and valleys
-    int StepCount::stepDetection(std::vector<double> magList) {
-      int n = magList->size() - 2;
-      if magList->size() < windowSize) {
+    int StepCount::stepDetection(float accel_x, float accel_y, float accel_z) {
+      Vec3f accelVector = Vec3f(accel_x, accel_y, accel_x);
+      accelList->add(accelVector)
+      double mag = accelVector.length()
+      // camping and cutting
+      if (mag>1.4){mag =1.4;}
+      if (mag < 0.8){mag=0.8;}
+      filtered->add(mag)
+
+      int n = filtered->size() - 2;
+      if filtered->size() < windowSize) {
         return;
       }
-      double anmin = magList->get(n-1);
-      double an = magList->get(n);
-			double anplus = magList->get(n + 1);
+      double anmin = filtered->get(n-1);
+      double an = filtered->get(n);
+			double anplus = filtered->get(n + 1);
 			State stateCandidate = detectCandidate(anmin, an, anplus);
 
       if (stateCandidate==State::PEAK) {
@@ -134,7 +142,7 @@
         // filling temp with mags in window
         std::vector<double> *temp = std::vector<double>();
         for (int i = max(0, accelList->size() - windowStdSize); i <	accelList->size(); i++) {
-  					temp->add(magList->get(i));
+  					temp->add(filtered->get(i));
   				}
         stdDev = getStdDev(temp);
         if (std::isnan(Thp)) { Thp = 0;}
