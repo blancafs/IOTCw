@@ -32,11 +32,11 @@ class StepCount {
 		std::vector<float> *accel_xs;
 
 	public:
-    StepCount(); // Initialises all values
-    float getMean(std::vector<double> *list);// Gets mean of given list
-    float getStdDev(std::vector<double> *list); // Gets standard deviation of a given list
-    State detectCandidate(double anmin, double an, double anplus);   // Classifies state
-    void updatePeak(double an, int n); // Updates peak values
-    void updateValley(double an, int n); // Updates valley values
-    int stepDetection(std::vector<double> magList); // Classifies step and updates peaks and valleys
+	    StepCount(); // Initialises all values
+	    float getMean(std::vector<double> *list);// Gets mean of given list
+	    float getStdDev(std::vector<double> *list); // Gets standard deviation of a given list
+	    State detectCandidate(double anmin, double an, double anplus);   // Classifies state
+	    void updatePeak(double an, int n); // Updates peak values
+	    void updateValley(double an, int n); // Updates valley values
+	    int stepDetection(float accel_x, float accel_y, float accel_z); // Classifies step and updates peaks and valleys
 };
